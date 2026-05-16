@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" role="img" aria-labelledby="title desc">
+  <title id="title">Peblo Notes Architecture</title>
+  <desc id="desc">Production style architecture diagram showing user, UI layer, API route handlers, and data services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f2937" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+    </marker>
+    <style>
+      .title { font: 700 34px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 16px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; }
+      .section { font: 700 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e2e8f0; letter-spacing: 0.04em; }
+      .node { font: 600 16px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; }
+      .small { font: 500 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; }
+      .chip { font: 600 12px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #93c5fd; letter-spacing: 0.06em; }
+      .box { fill: #0f172a; stroke: #334155; stroke-width: 1.5; rx: 18; ry: 18; }
+      .box2 { fill: #111827; stroke: #475569; stroke-width: 1.5; rx: 18; ry: 18; }
+      .accent { stroke: url(#accent); stroke-width: 3; fill: none; }
+      .muted { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .strong { stroke: #94a3b8; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="920" fill="url(#bg)" />
+  <rect x="40" y="36" width="1520" height="848" rx="28" fill="#0b1220" stroke="#1f2937" stroke-width="1.5" filter="url(#shadow)" />
+  <rect x="40" y="36" width="1520" height="8" fill="url(#accent)" opacity="0.95" />
+
+  <text x="80" y="106" class="title">Peblo Notes Architecture</text>
+  <text x="80" y="138" class="subtitle">App Router UI, server route handlers, Supabase persistence, and Gemini-powered note insights</text>
+
+  <text x="80" y="198" class="section">CLIENT AND UI</text>
+  <text x="600" y="198" class="section">SERVER ROUTES</text>
+  <text x="1120" y="198" class="section">DATA AND SERVICES</text>
+
+  <!-- Client column -->
+  <rect x="70" y="230" width="420" height="250" class="box" />
+  <text x="100" y="270" class="node">App Router Pages</text>
+  <text x="100" y="304" class="small">dashboard, login, signup, shared note view</text>
+  <text x="100" y="354" class="chip">/app/dashboard</text>
+  <text x="100" y="384" class="chip">/app/login</text>
+  <text x="100" y="414" class="chip">/app/signup</text>
+  <text x="100" y="444" class="chip">/app/shared/[shareId]</text>
+
+  <rect x="70" y="520" width="420" height="210" class="box2" />
+  <text x="100" y="560" class="node">Interactive Components</text>
+  <text x="100" y="594" class="small">note editor, AI assistant, theme provider</text>
+  <text x="100" y="644" class="chip">NoteEditor.tsx</text>
+  <text x="100" y="674" class="chip">AIPanel.tsx</text>
+  <text x="100" y="704" class="chip">ThemeProvider.tsx</text>
+
+  <!-- Server column -->
+  <rect x="590" y="230" width="420" height="170" class="box" />
+  <text x="620" y="270" class="node">Notes API</text>
+  <text x="620" y="304" class="small">CRUD, filters, archive, delete, autosave</text>
+  <text x="620" y="348" class="chip">/app/api/notes</text>
+  <text x="620" y="378" class="chip">/app/api/notes/[id]</text>
+
+  <rect x="590" y="420" width="420" height="140" class="box2" />
+  <text x="620" y="460" class="node">AI Generation API</text>
+  <text x="620" y="494" class="small">title suggestions, summary, action items</text>
+  <text x="620" y="538" class="chip">/app/api/notes/[id]/generate</text>
+
+  <rect x="590" y="580" width="420" height="150" class="box" />
+  <text x="620" y="620" class="node">Insights and Sharing</text>
+  <text x="620" y="654" class="small">dashboard stats and public share access</text>
+  <text x="620" y="698" class="chip">/app/api/insights</text>
+  <text x="620" y="728" class="chip">/app/api/shared/[shareId]</text>
+
+  <!-- Data column -->
+  <rect x="1110" y="230" width="420" height="170" class="box" />
+  <text x="1140" y="270" class="node">Supabase</text>
+  <text x="1140" y="304" class="small">Postgres database, auth sessions, row access</text>
+  <text x="1140" y="348" class="chip">server client</text>
+  <text x="1140" y="378" class="chip">browser client</text>
+
+  <rect x="1110" y="420" width="420" height="140" class="box2" />
+  <text x="1140" y="460" class="node">Google Gemini</text>
+  <text x="1140" y="494" class="small">content generation for notes assistance</text>
+
+  <rect x="1110" y="580" width="420" height="150" class="box" />
+  <text x="1140" y="620" class="node">Shared Types and Middleware</text>
+  <text x="1140" y="654" class="small">TypeScript contracts and auth protection</text>
+  <text x="1140" y="698" class="chip">lib/types.ts</text>
+  <text x="1140" y="728" class="chip">app/middleware.ts</text>
+
+  <!-- Flow arrows -->
+  <path d="M 490 355 C 540 355, 540 315, 590 315" class="muted" />
+  <path d="M 490 630 C 540 630, 540 485, 590 485" class="muted" />
+  <path d="M 1010 315 C 1060 315, 1060 315, 1110 315" class="strong" />
+  <path d="M 1010 490 C 1060 490, 1060 490, 1110 490" class="strong" />
+  <path d="M 1010 655 C 1060 655, 1060 655, 1110 655" class="strong" />
+
+  <!-- Top flow labels -->
+  <text x="525" y="335" class="small">fetch / mutate notes</text>
+  <text x="525" y="575" class="small">autosave and AI actions</text>
+  <text x="1020" y="336" class="small">server-side persistence</text>
+  <text x="1020" y="511" class="small">Gemini requests</text>
+  <text x="1020" y="676" class="small">sessions and shared contracts</text>
+</svg>
