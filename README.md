@@ -6,7 +6,7 @@ A full-stack, AI-powered notes application built for the Peblo Full Stack Develo
 [[Click Here](https://smartnotes-blue.vercel.app)]
 
 ## Demo Video
-[Your video link here]
+[[Video Link](https://youtu.be/dpWwvn2dsqw)]
 
 ## Tech Stack
 
