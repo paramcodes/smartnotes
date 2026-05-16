@@ -3,7 +3,7 @@
 A full-stack, AI-powered notes application built for the Peblo Full Stack Developer Challenge.
 
 ## Live Demo
-[Your Vercel URL here]
+[[Click Here](https://smartnotes-blue.vercel.app)]
 
 ## Demo Video
 [Your video link here]
@@ -50,7 +50,7 @@ A full-stack, AI-powered notes application built for the Peblo Full Stack Develo
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/yourusername/peblo-notes
+git clone https://github.com/paramcodes/smartnotes
 cd peblo-notes
 ```
 
