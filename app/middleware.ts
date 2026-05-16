@@ -40,6 +40,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
+  // If logged in and visiting home → go to dashboard
+  if (user && request.nextUrl.pathname === '/') {
+  return NextResponse.redirect(new URL('/dashboard', request.url))
+}
+
   return supabaseResponse
 }
 
