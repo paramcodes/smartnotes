@@ -97,7 +97,8 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="text-center text-xs text-gray-400 pb-6">
-        Built for the Peblo Full Stack Developer Challenge
+        Built in India ❤️
+
       </footer>
 
     </div>

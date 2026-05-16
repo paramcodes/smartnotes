@@ -63,6 +63,16 @@ export default function DashboardPage() {
     if (selectedNote?.id === id) setSelectedNote(null)
   }
 
+  async function unarchiveNote(id: string) {
+    await fetch(`/api/notes/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ is_archived: false })
+    })
+    setNotes(prev => prev.filter(n => n.id !== id))
+    if (selectedNote?.id === id) setSelectedNote(null)
+  }
+
   function onNoteUpdated(updated: Note) {
     setNotes(prev => prev.map(n => n.id === updated.id ? updated : n))
     setSelectedNote(updated)
@@ -82,12 +92,6 @@ export default function DashboardPage() {
             className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 dark:text-gray-300 ${!showArchived ? 'bg-gray-100 dark:bg-gray-800 font-medium' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}`}
           >
             <FileText size={15} /> All Notes
-          </button>
-          <button
-            onClick={() => { setShowArchived(true); setFilterTag('') }}
-            className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 dark:text-gray-300 ${showArchived ? 'bg-gray-100 dark:bg-gray-800 font-medium' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}`}
-          >
-            <Archive size={15} /> Archived
           </button>
           <Link
             href="/dashboard/insights"
@@ -180,8 +184,9 @@ export default function DashboardPage() {
                   <p className="text-sm font-medium truncate flex-1 text-gray-900 dark:text-gray-200">{note.title || 'Untitled'}</p>
                   <div className="hidden group-hover:flex items-center gap-1 ml-1">
                     <button
-                      onClick={e => { e.stopPropagation(); archiveNote(note.id) }}
+                      onClick={e => { e.stopPropagation(); showArchived ? unarchiveNote(note.id) : archiveNote(note.id) }}
                       className="p-1 hover:bg-gray-200 rounded dark:hover:bg-gray-700"
+                      title={showArchived ? 'Unarchive' : 'Archive'}
                     >
                       <Archive size={12} className="text-gray-500" />
                     </button>
