@@ -93,6 +93,12 @@ export default function DashboardPage() {
           >
             <FileText size={15} /> All Notes
           </button>
+          <button
+            onClick={() => { setShowArchived(true); setFilterTag('') }}
+            className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 dark:text-gray-300 ${showArchived ? 'bg-gray-100 dark:bg-gray-800 font-medium' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}`}
+          >
+            <Archive size={15} /> Archived
+          </button>
           <Link
             href="/dashboard/insights"
             className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
